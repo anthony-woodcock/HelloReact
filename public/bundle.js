@@ -22433,6 +22433,8 @@ module.exports = ReactDOMInvalidARIAHook;
 "use strict";
 
 
+/* globals localStorage */
+
 var React = __webpack_require__(16);
 var Map = __webpack_require__(187);
 var stores = __webpack_require__(33);
