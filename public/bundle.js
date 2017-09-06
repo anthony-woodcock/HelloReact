@@ -22443,10 +22443,16 @@ var Favourites = __webpack_require__(189);
 var StoreLocator = React.createClass({
   displayName: 'StoreLocator',
   getInitialState: function getInitialState() {
+    var favourites = [];
+
+    if (localStorage.favourites) {
+      favourites = JSON.parse(localStorage.favourites);
+    }
+
     return {
       lat: 53.4719986,
       lng: -2.2414979,
-      favourites: []
+      favourites: favourites
     };
   },
 
@@ -22468,6 +22474,8 @@ var StoreLocator = React.createClass({
     this.setState({
       favourites: favourites
     });
+
+    localStorage.favourites = JSON.stringify(favourites);
   },
   removeFromFavourites: function removeFromFavourites(storeId) {
     var favourites = this.state.favourites;
@@ -22479,6 +22487,8 @@ var StoreLocator = React.createClass({
       this.setState({
         favourites: favourites
       });
+
+      localStorage.favourites = JSON.stringify(favourites);
     }
   },
   isFavourited: function isFavourited(storeId) {

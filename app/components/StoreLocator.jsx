@@ -1,3 +1,5 @@
+/* globals localStorage */
+
 var React = require('react')
 var Map = require('./Map')
 var stores = require('../data/stores')
@@ -8,10 +10,16 @@ var Favourites = require('./Favourites')
 
 var StoreLocator = React.createClass({
   getInitialState () {
+    var favourites = []
+
+    if (localStorage.favourites) {
+      favourites = JSON.parse(localStorage.favourites)
+    }
+
     return {
       lat: 53.4719986,
       lng: -2.2414979,
-      favourites: []
+      favourites: favourites
     }
   },
   handleMarkerClick: function (details) {
@@ -32,6 +40,8 @@ var StoreLocator = React.createClass({
     this.setState({
       favourites: favourites
     })
+
+    localStorage.favourites = JSON.stringify(favourites)
   },
   removeFromFavourites: function (storeId) {
     var favourites = this.state.favourites
@@ -43,6 +53,8 @@ var StoreLocator = React.createClass({
       this.setState({
         favourites: favourites
       })
+
+      localStorage.favourites = JSON.stringify(favourites)
     }
   },
   isFavourited: function (storeId) {
