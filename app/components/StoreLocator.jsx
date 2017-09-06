@@ -3,6 +3,7 @@ var Map = require('./Map')
 var stores = require('../data/stores')
 var findElement = require('../helpers/findElement')
 var CurrentLocation = require('./CurrentLocation')
+var Favourites = require('./Favourites')
 
 
 var StoreLocator = React.createClass({
@@ -70,6 +71,10 @@ var StoreLocator = React.createClass({
             onToggleFavourite={this.handleToggleFavourite}
             isFavourited={this.isFavourited}
            />
+           <div className='title'>
+               Favourite stores
+            </div>
+            <Favourites isFavourited={this.isFavourited} onToggleFavourite={this.handleToggleFavourite} favouriteStores={this.state.favourites}/>
         </div>
         <div className='map'>
           <Map lat={this.state.lat} lng={this.state.lng} onMarkerClick = {this.handleMarkerClick} />
