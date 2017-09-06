@@ -1,7 +1,9 @@
 var React = require('react')
 var Map = require('./Map')
-var stores = require('../data/stores.js')
-var findElement = require('../helpers/findElement.js')
+var stores = require('../data/stores')
+var findElement = require('../helpers/findElement')
+var CurrentLocation = require('./CurrentLocation')
+
 
 var StoreLocator = React.createClass({
     getInitialState () {
@@ -28,7 +30,8 @@ var StoreLocator = React.createClass({
             <div className='title'>
                 Store Locator
             </div>
-            </div>
+            <CurrentLocation storeId={this.state.currentLocation} />
+        </div>
             <div className='map'>
             <Map lat={this.state.lat} lng={this.state.lng} onMarkerClick = {this.handleMarkerClick} />
             </div>

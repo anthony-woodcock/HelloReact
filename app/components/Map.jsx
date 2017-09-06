@@ -1,5 +1,5 @@
 var React = require('react')
-var stores = require('stores')
+var stores = require('../data/stores')
 
 var Map = React.createClass({
   componentDidMount: function () {
@@ -19,7 +19,7 @@ var Map = React.createClass({
 
     var onMarkerClick = this.props.onMarkerClick
 
-    var markers = stores.map(function () {
+    var markers = stores.map(function (store) {
       return Object.assign({}, store, {
         details: {
           id: store.id
